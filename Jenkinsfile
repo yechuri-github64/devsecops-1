@@ -3,7 +3,7 @@
      stages {
          stage('Build Artifact - Maven') {
              steps {
-             sh "mvn clean package -DskipTests=true"
+             sh "mvn clean package -DskipTests=true" // checking
              archive 'target/*.jar'    
              }
          }
