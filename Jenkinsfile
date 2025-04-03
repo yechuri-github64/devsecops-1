@@ -7,5 +7,10 @@
              archive 'target/*.jar'    
              }
          }
+      stage('test stage') {
+             steps {
+             sh "mvn test" 
+             }
+         }
       }
 }
