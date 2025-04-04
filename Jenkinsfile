@@ -14,7 +14,7 @@
       }
       stage( 'docker stage') {
        steps {
-          docker.withRegistry(url: "", registryCredentialsId: "docker-hub") {
+          withDockerRegistry([CredentialsId: "docker-hub", url: ""]) {
             sh 'docker build -t akhilyechuri064/devops:""$GIT_COMMIT"" .'
             sh 'docker push akhilyechuri064/devops:""$GIT_COMMIT""'
           }
