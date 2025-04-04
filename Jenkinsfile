@@ -12,5 +12,11 @@
              sh "mvn test" 
              }
       }
-    }
+      stage( 'docker stage') {
+       steps {
+        sh 'docker build -t akhilyechuri064/devops:""$GIT_COMMIT"" .'
+        SH 'docker push akhilyechuri064/devops:""$GIT_COMMIT""'
+       }
+     }
+ }
  }
