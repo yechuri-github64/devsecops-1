@@ -31,7 +31,7 @@ pipeline {
                 withDockerRegistry([credentialsId: DOCKER_CREDENTIALS_ID, url: DOCKER_REGISTRY]) {
                     sh 'docker build -t akhilyechuri064/devops:"${GIT_COMMIT}" .'
                     sh 'docker push akhilyechuri064/devops:"${GIT_COMMIT}"'
-                    sh 'docker run -p 4499:4499 akhilyechuri064/devops:"${GIT_COMMIT}'
+                    sh 'docker run -p 4499:4499 akhilyechuri064/devops:"${GIT_COMMIT} &'
                 }
             }
         }
