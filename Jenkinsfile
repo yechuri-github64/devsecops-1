@@ -3,7 +3,8 @@ pipeline {
 
     environment {
         DOCKER_REGISTRY = 'https://index.docker.io/v1/'  
-        DOCKER_CREDENTIALS_ID = 'docker-hub'  
+        DOCKER_CREDENTIALS_ID = 'docker-hub' 
+        KUBECONFIG = 'kube-config'
     }
 
     stages {
@@ -35,5 +36,13 @@ pipeline {
                 }
             }
         }
+        stage('Kubernetes Deployment') {
+            steps {
+                withKubeConfig([credentialsId: KUBECONFIG]) {
+                    sh "sed -i 's#replace#akhilyechuri064/devops:${GIT_COMMIT}#g' deployment.yaml"
+                    sh "kubectl apply -f deployment.yaml"
+                }
+              }
+         }
     }
 }
