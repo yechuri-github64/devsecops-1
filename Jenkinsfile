@@ -20,7 +20,7 @@ pipeline {
   }
     stage ('docker build amd push' ) {
       steps {
-        withDockerRegistry([credentialsID: "dockercred", url: ""]) {
+        withDockerRegistry([credentialsId: "dockercred", url: ""]) {
           sh 'docker build -t akhilyechuri064/devops:"${GIT_COMMIT}" .'
           sh 'docker push akhilyechuri064/devops:"${GIT_COMMIT}"'
         }
