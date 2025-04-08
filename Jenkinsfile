@@ -7,5 +7,10 @@ pipeline {
         archiveArtifacts artifacts:'target/*.jar, allowEmptyArchive:true'
       }
     }
+    stage ('test stage' ) {
+      steps {
+        sh 'mvn test'
+      }
+    }
   }
 }
