@@ -32,6 +32,7 @@ pipeline {
       steps { 
         sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=devsecops -Dsonar.projectName='devsecops' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_ccd948bffca8dbafe095b021db6d79ebabe65dbf'
       }
+    }
     stage ('docker build amd push' ) {
       steps {
         withDockerRegistry([credentialsId: "dockercred", url: ""]) {
